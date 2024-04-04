@@ -25,11 +25,18 @@ class Contact:
 class AddressBook:
     """ 주소록 클래스 """
 
+    count = 0
+
     def __init__(self):
         self.head = None
 
+    @classmethod
+    def cls_count_view(cls):
+        return AddressBook.count
+
     def add_contact(self, name, phone, email):
         """ 연락처 추가 """
+        AddressBook.count += 1
         new_contact = Contact(name, phone, email)
         if not self.head:
             self.head = new_contact
@@ -53,6 +60,9 @@ address_book.add_contact("John Doe", "123-456-7890", "john@example.com")
 address_book.add_contact("Jane Smith", "987-654-3210", "jane@example.com")
 address_book.add_contact("Alice", "111-222-3333", "alice@example.com")
 
+print(f'전체 연락처는 총 {address_book.cls_count_view()}개 입니다.')
+
 print("전체 연락처:")
 address_book.display_contacts()
+
 

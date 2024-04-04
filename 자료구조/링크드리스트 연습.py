@@ -42,6 +42,15 @@ class LinkedList:
         result += "None"
         return result
 
+    def find_node_at(self, index):
+        """ 링크드 리스트 접근 연산 멘소드, 파라미터 인덱스는 항상 있다고 가정 """
+        iterator = self.head
+
+        for _ in range(index):
+            iterator = iterator.next
+
+        return iterator
+
     def append(self, data):
         """링크드 리스트 추가 연산 메소드"""
         new_node = Node(data)
@@ -63,3 +72,8 @@ my_list.append(13)
 my_list.append(15)
 
 print(my_list)
+
+print(my_list.find_node_at(3).data)
+
+my_list.find_node_at(3).data = 11
+print(my_list.find_node_at(3).data)
